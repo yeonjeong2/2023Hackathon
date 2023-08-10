@@ -1,0 +1,33 @@
+.div_head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+    text-align: center;
+}
+
+.par_depLocationAsk {
+    font-size: xx-large;
+    line-height:120%;
+    color:midnightblue;
+}
+
+.btn_depLocationConfirm{
+    margin-top:  10px;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid midnightblue;
+    color:midnightblue;
+    font-size: 19px;
+    width: 200px;
+    height: 150px;
+}
+
+.btn_depLocationConfirm:hover{
+    background-color: midnightblue;
+    color:white;
+}
+
+.btn_depLocationConfirm:first-child{
+    margin-right: 5px;
+}
