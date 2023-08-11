@@ -6,7 +6,7 @@ import re
 import sys
 
 import os
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:\speechtotext\clean-carrier-395011-bf9e0a30276f.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/nayeonjeong/profound-jet-395604-551994edcd55.json"
 
 from google.cloud import speech
 import pyaudio

@@ -59,7 +59,7 @@ public class main {
     @PostMapping("/messageCertificated")
     public String messageAuth(String messageNumber) {
         if(userRepository.findByToken(messageNumber) != null) {
-            return "index";
+            return "home";
         }
         else {
             return "main";

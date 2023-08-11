@@ -5,12 +5,12 @@
     <title>택시 부르기</title>
 </head>
 <body>
-<h3>M1Z4</h3>
-<button onclick="Speech()">🎙️</button>
+<h3>택시 잡아줘</h3>
+<button onclick="WhereToGo()">어디로 모실까요?️</button>
 </body>
 <script th:inline="javascript">
-  const Speech = () => {
-    location.href = "/speech";
+  const WhereToGo = () => {
+    location.href = "/location";
   }
 </script>
 </html>
