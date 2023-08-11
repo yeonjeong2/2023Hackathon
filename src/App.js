@@ -1,32 +1,34 @@
+import React, { useState, useEffect } from 'react';
 import './App.css';
-
-import Basic_Components_top from './Basic_Component_top';
-import Basic_Components_bottom from './Basic_Component_bottom';
+import customAxios from './customAxios';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import DepartureLocation from "./components/DepartureLocation";
-import ArrivalLocation from './components/ArrivalLocation';
 import CheckPath from './components/CheckPath';
 import SetArrivalLocation from './components/SetArrivalLocation';
 import LoginPage from './components/LoginPage';
-import Button from './components/EmptyPageWithButton';
 
 function App() {
+    // // IP주소 변수 선언
+    // const [ip, setIp] = useState('');
+
+    // // IP주소 값을 설정합니다.
+    // function callback(data) {
+    //   setIp(data);
+    // }
+  
+    // // 첫번째 렌더링을 다 마친 후 실행합니다.
+    // useEffect(() => {
+    //     // 클라이언트의 IP주소를 알아내는 백엔드의 함수를 호출합니다.
+    //     customAxios('/ip', callback);
+    //   }, []);
+
   return (
-    <div className="App" style={{height:'900px', width:'500px'}}>
-      <div className="phone">
-        <div className="screen">
-          <div className="basic_Components_top">
-            <Basic_Components_top />
-            <hr />
-          </div>
-          <Button />
-          <div className="basic_Components_bottom">
-            <hr />
-            <Basic_Components_bottom />
-          </div>
-        </div>
-      </div>
-    </div>
+        <Routes>
+          <Route path={"/"} element={<DepartureLocation />}></Route>
+          <Route path={"/arrivalLocation"} element={<SetArrivalLocation />}></Route>
+          <Route path={"/checkPath"} element={<CheckPath />}></Route>
+        </Routes>
   );
 }
  

@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import NaverMapEx1 from "../NaverMapEx1.js";
+import Map from "./Map.js";
 import './CheckPath.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMicrophone, faKeyboard } from "@fortawesome/free-solid-svg-icons";
+import Basic_Components_top from '../Basic_Component_top';
+import Basic_Components_bottom from '../Basic_Component_bottom';
 
-export default function CheckPath() {
+export default function SetArrivalLocation() {
+    // console.log("locPosition in SetArrivalLocation:", locPosition);
+    
     const [destination, setDestination] = useState(""); // 목적지 설정하기, 초기 상태는 ""
     const [isModalOpen, setIsModalOpen] = useState(false); // 모달이 열려있는지 여부 
     const [buttonText1, setButtonText1] = useState("말로 찾기"); // 좌측 버튼 텍스트 설정하기
@@ -35,51 +39,68 @@ export default function CheckPath() {
     };
 
     return (
-        <div className="div_head">
-            <div className="location">
-                <p>내 위치 &nbsp; <b>가져온 위치 정보</b></p> {/* 현 위치도 가져와야 함. 현재는 우선 '가져온 위치 정보'로 고정 */}
-            </div>
-            <div className="location">
-                <p>목적지 &nbsp; <b>{destination}</b></p> {/* 목적지를 담는 destination 변수, 현재는 모달을 닫을 경우 '가져온 위치 정보'로 고정 */}
-            </div>
-            <NaverMapEx1 /> {/* 지도. 초기엔 현위치만 뜨고, 목적지 설정이 완료되면 경로를 보여줄 예정. 아직 구현 X */}
-            목적지를 설정해주세요!
-            <div className="buttons">
-                {!destination && ( // 목적지가 아직 설정되지 않았을 때
-                    <>
-                    <button
-                        className="btn_depLocationConfirm btn_shareHover"
-                        onClick={handleOpenModal}> 
-                        <FontAwesomeIcon icon={faMicrophone} /> {buttonText1} {/* 말로 찾기 버튼 */}
-                    </button>
-                    <button
-                        className="btn_depLocationConfirm btn_shareHover"
-                        onClick={handleOpenModal}>
-                        <FontAwesomeIcon icon={faKeyboard} /> {buttonText2} {/* 글로 찾기 버튼 */}
-                    </button>
-                    </>
-                )}
-                {destination && ( // 목적지가 설정되었을 때
-                    <>
-                    <button
-                        className="btn_depLocationConfirm btn_shareHover"
-                        onClick={handleConfirm}> {buttonText1} {/* 호출하기 버튼 */}
-                    </button>
-                    <button
-                        className="btn_depLocationConfirm btn_shareHover"
-                        onClick={handleResearch}> {buttonText2} {/* 다시 찾기 버튼 */}
-                    </button>
-                    </>
-                )}
-                {isModalOpen && (
-                    <div className="modal-overlay">
-                        <div className="modal">
-                            <h3>도착지 설정하기</h3> {/* 도착지를 설정할 모달. 현재는 아무런 기능이 없고 텍스트만 뜸 */}
-                            <button onClick={handleCloseModal}>닫기</button> {/* 닫기 버튼, 누를 경우 목적지(destination)은 임시로 "가져온 위치 정보"로 저장되고 버튼이 변경됨 */}
+        <div className="App" style={{height:'900px', width:'500px'}}>
+            <div className="phone">
+                <div className="screen">
+                    <div className="basic_Components_top">
+                        <Basic_Components_top />
+                        <hr />
+                    </div>
+
+                    <div className="div_head">
+                        <div className="location">
+                            <p>내 위치 &nbsp; <b>가져온 위치 정보</b></p> {/* 현 위치도 가져와야 함. 현재는 우선 '가져온 위치 정보'로 고정 */}
+                        </div>
+                        <div className="location">
+                            <p>목적지 &nbsp; <b>{destination}</b></p> {/* 목적지를 담는 destination 변수, 현재는 모달을 닫을 경우 '가져온 위치 정보'로 고정 */}
+                        </div>
+                        <Map /> {/* 지도. 초기엔 현위치만 뜨고, 목적지 설정이 완료되면 경로를 보여줄 예정. 아직 구현 X */}
+                        목적지를 설정해주세요!
+                        <div className="buttons">
+                            {!destination && ( // 목적지가 아직 설정되지 않았을 때
+                                <>
+                                <button
+                                    className="btn_depLocationConfirm btn_shareHover"
+                                    onClick={handleOpenModal}> 
+                                    <FontAwesomeIcon icon={faMicrophone} /> {buttonText1} {/* 말로 찾기 버튼 */}
+                                </button>
+                                <button
+                                    className="btn_depLocationConfirm btn_shareHover"
+                                    onClick={handleOpenModal}>
+                                    <FontAwesomeIcon icon={faKeyboard} /> {buttonText2} {/* 글로 찾기 버튼 */}
+                                </button>
+                                </>
+                            )}
+                            {destination && ( // 목적지가 설정되었을 때
+                                <>
+                                <button
+                                    className="btn_depLocationConfirm btn_shareHover"
+                                    onClick={handleConfirm}> {buttonText1} {/* 호출하기 버튼 */}
+                                </button>
+                                <button
+                                    className="btn_depLocationConfirm btn_shareHover"
+                                    onClick={handleResearch}> {buttonText2} {/* 다시 찾기 버튼 */}
+                                </button>
+                                </>
+                            )}
+                            {isModalOpen && (
+                                <div className="modal-overlay">
+                                    <div className="modal">
+                                        <h3>도착지 설정하기</h3> {/* 도착지를 설정할 모달. 현재는 아무런 기능이 없고 텍스트만 뜸 */}
+                                        <button onClick={handleCloseModal}>닫기</button> {/* 닫기 버튼, 누를 경우 목적지(destination)은 임시로 "가져온 위치 정보"로 저장되고 버튼이 변경됨 */}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
-                )}
+
+                <div className="basic_Components_bottom">
+                <hr />
+                    <Basic_Components_bottom />
+                </div>
             </div>
         </div>
+    </div>
     );
 }
+

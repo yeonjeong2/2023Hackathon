@@ -7,25 +7,26 @@
 }
 
 .par_depLocationAsk {
-    font-size: xx-large;
-    line-height:120%;
-    color:midnightblue;
+    font-size: 35px;
+    line-height: 120%;
+    margin: 10px;
 }
 
 .btn_depLocationConfirm{
-    margin-top:  10px;
-    background-color: white;
+    margin: 10px 0px 10px;
+    background-color: rgb(108, 184, 85);
     border-radius: 10px;
-    border: 2px solid midnightblue;
-    color:midnightblue;
-    font-size: 19px;
+    border: none;
+    color: white;
+    font-size: 26px;
     width: 200px;
-    height: 150px;
+    height: 130px;
 }
 
 .btn_depLocationConfirm:hover{
-    background-color: midnightblue;
-    color:white;
+    background-color: rgb(27, 117, 49);
+    color: white;
+    cursor: pointer;
 }
 
 .btn_depLocationConfirm:first-child{
