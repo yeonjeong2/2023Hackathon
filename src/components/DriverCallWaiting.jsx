@@ -1,7 +1,7 @@
 import Basic_Components_top from '../Basic_Component_top';
 import Basic_Components_bottom from '../Basic_Component_bottom';
 
-export default function CheckPath() {
+export default function DriverCallWaiting() {
     return (
         <div className="App" style={{height:'900px', width:'500px'}}>
             <div className="phone">
