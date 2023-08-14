@@ -12,6 +12,14 @@
     margin: 10px;
 }
 
+.location {
+    margin: 3px 10px 10px 10px;
+    background-color: rgba(230, 230, 230, 0.671);
+    border-radius: 10px;
+    border: none;
+    width: 400px;
+}
+
 .btn_depLocationConfirm{
     margin: 10px 0px 10px;
     background-color: rgb(108, 184, 85);
@@ -20,7 +28,7 @@
     color: white;
     font-size: 26px;
     width: 200px;
-    height: 130px;
+    height: 120px;
 }
 
 .btn_depLocationConfirm:hover{

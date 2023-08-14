@@ -20,7 +20,7 @@ export default function SetArrivalLocation() {
 
     const handleCloseModal = () => { // 띄워져 있는 모달의 닫기 버튼을 클릭할 경우 실행됨
         setIsModalOpen(false); // 모달의 오픈 여부 false로 설정
-        setDestination("가져온 위치 정보"); // 임시로 목적지(destination)는 "가져온 위치 정보"로 설정
+        setDestination("목록에서 선택하기"); // 임시로 목적지(destination)는 "가져온 위치 정보"로 설정
         setButtonText1("호출하기"); // 좌측 버튼 텍스트를 "호출하기"로 변경
         setButtonText2("다시 찾기"); // 우측 버튼 텍스트를 "다시 찾기"로 변경
     };
@@ -36,6 +36,10 @@ export default function SetArrivalLocation() {
         setDestination(""); // 목적지(destination)을 ""로 초기화
         setButtonText1("말로 찾기"); // 좌측 버튼(확인하기)의 텍스트를 다시 초기 상태(말로 찾기)로 변경
         setButtonText2("글로 찾기"); // 우측 버튼(다시 찾기)의 텍스트를 다시 초기 상태(글로 찾기)로 변경
+    };
+
+    const handleSelect = () => {
+        setDestination("가져온 위치 정보");
     };
 
     return (
@@ -54,8 +58,7 @@ export default function SetArrivalLocation() {
                         <div className="location">
                             <p>목적지 &nbsp; <b>{destination}</b></p> {/* 목적지를 담는 destination 변수, 현재는 모달을 닫을 경우 '가져온 위치 정보'로 고정 */}
                         </div>
-                        <Map /> {/* 지도. 초기엔 현위치만 뜨고, 목적지 설정이 완료되면 경로를 보여줄 예정. 아직 구현 X */}
-                        목적지를 설정해주세요!
+                         {/* 지도. 초기엔 현위치만 뜨고, 목적지 설정이 완료되면 경로를 보여줄 예정. 아직 구현 X */}
                         <div className="buttons">
                             {!destination && ( // 목적지가 아직 설정되지 않았을 때
                                 <>
@@ -73,6 +76,12 @@ export default function SetArrivalLocation() {
                             )}
                             {destination && ( // 목적지가 설정되었을 때
                                 <>
+                                <ul>
+                                    <li>목적지 리스트 가져오기</li> 
+                                    <button className="list" onClick={handleSelect}>선택</button>
+                                    <li>야호..~~~</li>
+                                    <button className="list" onClick={handleSelect}>선택</button>
+                                </ul>
                                 <button
                                     className="btn_depLocationConfirm btn_shareHover"
                                     onClick={handleConfirm}> {buttonText1} {/* 호출하기 버튼 */}
