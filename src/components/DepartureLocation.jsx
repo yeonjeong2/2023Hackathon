@@ -1,5 +1,6 @@
 import Map from './Map'
 import './DepartureLocation.css'
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Basic_Components_top from '../Basic_Component_top';
 import Basic_Components_bottom from '../Basic_Component_bottom';
@@ -9,6 +10,12 @@ export default function DepartureLocation (){
 
     function goSetArrivalLocation() {
         movePage('/arrivalLocation');
+    }
+
+    const [detailAddr, setDetailAddr] = useState("");
+
+    function handleDetailAddrChange(newDetailAddr) {
+        setDetailAddr(newDetailAddr);
     }
 
     return (
@@ -24,9 +31,10 @@ export default function DepartureLocation (){
                         <div>
                             <p className="par_depLocationAsk">어디서 출발하시나요?</p>
                         </div>
-                        <Map />
+                        <Map onDetailAddrChange={handleDetailAddrChange} />
+                        
                         <div className="location">
-                            <p>내 위치 &nbsp; <b>가져온 위치 정보</b></p> {/* 현 위치도 가져와야 함. 현재는 우선 '가져온 위치 정보'로 고정 */}
+                            <p>내 위치 &nbsp; <b>{detailAddr}</b></p> {/* 현 위치도 가져와야 함. 현재는 우선 '가져온 위치 정보'로 고정 */}
                         </div>
                         <div className="buttons">
                             <button className="btn_depLocationConfirm" onClick={goSetArrivalLocation}>여기로<br/>부를게요</button>
