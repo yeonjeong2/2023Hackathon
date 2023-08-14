@@ -81,3 +81,16 @@
     text-align: center;
     max-width: 400px;
 }
+
+input {
+    padding: 10px 80px;
+}
+
+.btn_select {
+    background-color: rgb(108, 184, 85);
+    border: none;
+    font-size: 20px;
+    width: 80px;
+    height: 40px;
+    color: white;
+}
