@@ -13,3 +13,6 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+
+server:
+  address: 172.31.1.230
