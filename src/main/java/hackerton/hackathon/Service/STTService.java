@@ -10,9 +10,9 @@ import java.nio.charset.Charset;
 @Service
 public class STTService {
     public String SpeechToText() throws IOException, InterruptedException {
-        Process process = Runtime.getRuntime().exec("python /Users/nayeonjeong/hackerton/src/stt/stt.py");
+        Process process = Runtime.getRuntime().exec("python3 /Users/nayeonjeong/hackerton/src/stt/stt.py");
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), Charset.forName("EUC-KR")));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), Charset.forName("UTF-8")));
         String line;
         StringBuilder output = new StringBuilder();
 

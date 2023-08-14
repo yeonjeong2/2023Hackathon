@@ -5,6 +5,8 @@ from __future__ import division
 import re
 import sys
 
+sys.path.append("/Users/nayeonjeong/speech/env/bin/google")
+
 import os
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/nayeonjeong/profound-jet-395604-551994edcd55.json"
 
@@ -129,8 +131,8 @@ def listen_print_loop(responses):
 
             return
 
-            
-            
+
+
 
 
 def main():

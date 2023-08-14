@@ -38,4 +38,12 @@ public class LocationController {
         model.addAttribute("destination", destination);
         return "CallTaxi.html";
     }
+
+    @GetMapping("/write/{current}")
+    public String WriteSearchLocation(@PathVariable String current, Model model){
+        System.out.println("write");
+        model.addAttribute("current", current);
+        return "write.html";
+    }
+
 }
