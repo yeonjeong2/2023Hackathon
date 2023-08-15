@@ -40,6 +40,7 @@ dependencies {
 	implementation(platform('com.google.cloud:libraries-bom:26.10.0'))
 	implementation 'com.google.cloud:google-cloud-speech:4.7.0'
 	implementation("com.fasterxml.jackson.core:jackson-databind")
+	implementation('org.springframework.boot:spring-boot-starter-tomcat')
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
