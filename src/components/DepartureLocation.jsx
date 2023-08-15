@@ -24,7 +24,7 @@ export default function DepartureLocation (){
                 <div className="screen">
                     <div className="basic_Components_top">
                         <Basic_Components_top />
-                        <hr />
+
                     </div>
 
                     <div className="div_head">
@@ -34,7 +34,7 @@ export default function DepartureLocation (){
                         <Map onDetailAddrChange={handleDetailAddrChange} />
                         
                         <div className="location">
-                            <p>내 위치 &nbsp; <b>{detailAddr}</b></p> {/* 현 위치도 가져와야 함. 현재는 우선 '가져온 위치 정보'로 고정 */}
+                            <p style={{fontSize:"30px"}}>내 위치 &nbsp; <b>{detailAddr}</b></p> {/* 현 위치도 가져와야 함. 현재는 우선 '가져온 위치 정보'로 고정 */}
                         </div>
                         <div className="buttons">
                             <button className="btn_depLocationConfirm" onClick={goSetArrivalLocation}>여기로<br/>부를게요</button>
@@ -42,7 +42,7 @@ export default function DepartureLocation (){
                     </div>
 
                     <div className="basic_Components_bottom">
-                        <hr />
+                        
                         <Basic_Components_bottom />
                     </div>
                 </div>
