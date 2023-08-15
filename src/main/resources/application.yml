@@ -15,4 +15,4 @@ spring:
         format_sql: true
 
 server:
-  address: 172.31.1.230
+  address: 172.31.3.185
