@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "profound-jet-395604",
+  "private_key_id": "551994edcd553e540daf34be38e1348115644187",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4gN9JNJuFcAck\nSl34cXHzkSPd2t31AzM5ieKxKSbgoDh+N1YwgQ53lrRi9whYcGmp2Qf1K9w5WlTH\nssPde9GdYhlNJ3skMxUfzoybKZZVZWJT66204/NQvM0aezhZ5nfs91lANlTrUQV8\nu1jB6BapNrWsqTSvXxHz0cnjaiFtIlVUAUYHHEDEE7EMsjzjRFnIXYQGNdAAOxMJ\nA9h3bbAh5ZIHdaQQh7s966TlT3ZTie0Vn6PjbxZgKQdgzuaAD1x0sr9moPjHbRzZ\no1Xu7MJ8mepW3HoNOImn3LqxF7jtDgwTx1e6iDWfD6c4bC2TrFNc/izMxBc08iVN\nX9MVyb7nAgMBAAECggEAAPKvf9EgP3DwHcoV5ac6xLmLUhmh/WNsnvR2nWLQ8Zan\nj2NCmaTM6aEOiSaSllaK2+kE9vsxC1mYd+vOwOSlG2iCXF8O9era3+5c48kSc0V6\nBNw74FH+c3RZJ5IlCrYCgXgw82f6dbiqyOJIeogt4eUYZs5gj6f7mH9y++hZXATI\nb3XXLXAQxLrgid7W1aTXtEMgB9KwHAFdWstYfni1T9SerjN1paADqqivpNTiVG0E\n++TX8Y5ySneE++JjLPKnrKOEi44F1hYTbMtcuWFWAQN/vcC0RoGL7LfwNX/jzlpk\nUiyVHfiMMJNDyQIrGsLeQUbgPBKaF8gdIRojGlaaGQKBgQDq3OAh+f3MMPBXKfVp\nktBzrYWooEi8z8b/PkY1R4ZvTXcg+Bnka6v6L7I+yxkqm5c7sUPassMOfSuWD6xy\nQXNPPOCTDijC6K4qY61ZFrNoxyg/piIWdBJo47IsfZwCbY44b67w7ECS1zff0tnq\nXfguMGlHgEe24pcWs0oOinuIvQKBgQDJG72sBmVoKS0Ht7mAfFYWBaKrsbVgASkY\nykJPJD6Xvz9Fz78ADGhuYvOUsSZ2G3o2P1bKWxntJCkXwdMj6RWFntCdQ072FCGX\n1je8HZA7sSi3rTJIoIgtIlaNg2/F0oUKm3OC0XlvwDLv4zL+b43EDnpNvrKVJVgV\nbpljRtq6cwKBgQCYlsZb7MKy7jzINK+IVuVtspg7FWAMo+XDIV+V8BFssOSsG+Ue\nncHPOzvQRj3ki8/27VWLekb2W+Z8iVRdqx5Spde2UyWydF/rlHUkg3Yupe4FZFeT\nRPhNA1pYQ4efoDQdgJolVykg/gkEN0ZzWXgL8lIELVjqfk7xZazAw8I89QKBgQCd\n3LzCcDLh1JCYYkum4/LfToUmqVRqi/6qivoKDbVkgKc2MaEIdLT1EY+KxJQgWelQ\n89848NIlKCFpmKgYpDpUrRmsmM0+tQa5nVoavEof0SzZIYc7I2hBpZazdt0iN+Jf\nNS8zHSNp6UEStRGuT/rET2kJ5gtgr/O4vxyApXnEqQKBgDLFdQSOwTa9ZnhECzWF\nJiveMbN4osMD2Z+As+34/DozQcFNZLq7K+diypacygIdzQgSHScmu+T5nygeTg0n\nSaACXY05rfTDFBQCvox8orIx7R4/qL3c+Dhxpq81qKM+85i57NA7UFs2oMJGRk2t\nxLJDHIS307VCaTXk9PMVySYJ\n-----END PRIVATE KEY-----\n",
+  "client_email": "hackathon-speech@profound-jet-395604.iam.gserviceaccount.com",
+  "client_id": "103614030984479206775",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hackathon-speech%40profound-jet-395604.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
