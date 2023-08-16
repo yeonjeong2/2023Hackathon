@@ -6,8 +6,15 @@ import { faMicrophone, faKeyboard, faL } from "@fortawesome/free-solid-svg-icons
 import Basic_Components_top from '../Basic_Component_top';
 import Basic_Components_bottom from '../Basic_Component_bottom';
 import axios from 'axios';
+import { useLocation } from "react-router-dom";
 
 export default function SetArrivalLocation() {
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const xDep = params.get('xDep');
+    const yDep = params.get('yDep');
+    const depName = params.get('depName');
+
     const [customDestination, setCustomDestination] = useState('');
     const [destination, setDestination] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false); // 모달이 열려있는지 여부 
@@ -57,7 +64,8 @@ export default function SetArrivalLocation() {
             setIsModalOpen(false);
         };
     }, [destination]);
-
+    console.log(
+        "Dep X: "+xDep+" / Dep Y: "+yDep+" / Arr X: "+xDir+" / Arr Y: "+yDir);
     const handleConfirm = () => { // 모달을 닫고(목적지가 설정되고) 버튼이 변경되었을 때, 
         // 좌측 버튼(호출하기)을 클릭할 경우 실행됨
         setIsModalOpen(false); // 모달의 오픈 여부 false로 설정
@@ -66,9 +74,10 @@ export default function SetArrivalLocation() {
             method: 'post',
             url: 'http://localhost:8080/api/client',
             data: {
+                departureX: xDep,
+                departureY: yDep,
                 destinationX : xDir,
                 destinationY : yDir
-
                 /*current : {
                     currentX: xArr
                     currentY: yArr
@@ -95,7 +104,7 @@ export default function SetArrivalLocation() {
 
                     <div className="div_head">
                         <div className="location">
-                            <p>내 위치 &nbsp; <b>가져온 위치 정보</b></p> {/* 현 위치도 가져와야 함. 현재는 우선 '가져온 위치 정보'로 고정 */}
+                            <p>내 위치 &nbsp; <b>{depName}</b></p> {/* 현 위치도 가져와야 함. 현재는 우선 '가져온 위치 정보'로 고정 */}
                         </div>
                         <div className="location">
                             <p>목적지 &nbsp; <b>{destination}</b></p> {/* 목적지를 담는 destination 변수, 현재는 모달을 닫을 경우 '가져온 위치 정보'로 고정 */}
