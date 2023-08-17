@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './LoginPage.css'
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage () {
 
@@ -8,6 +9,11 @@ export default function LoginPage () {
     const [sendButtonState, setSendButtonState] = useState(true);
     const [authButtonState, setAuthButtonState] = useState(true);
     const [sendBtnText, setSendBtnText] = useState("인증번호 발송하기");
+
+    const movePage = useNavigate();
+    function goDepartureLocation() {
+        movePage(`/departureLocation`);
+    };
 
     useEffect (() => {
         if(phoneNum.length === 11){
@@ -54,7 +60,7 @@ export default function LoginPage () {
                 }}
             ></input> }
             {(!authButtonState&& !sendButtonState) ? <button className="sendBtn"
-                disabled={authButtonState}> {'인증하기'} 
+                disabled={authButtonState} onClick={goDepartureLocation}> {'인증하기'} 
             </button> : null}
         </div>
     );
