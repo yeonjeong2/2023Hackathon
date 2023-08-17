@@ -1,4 +1,4 @@
-package hackerton.hackathon.controller;
+package hackerton.hackathon.Controller;
 
 import hackerton.hackathon.Domain.LocationDB;
 import lombok.RequiredArgsConstructor;
