@@ -6,13 +6,14 @@ import hackerton.hackathon.Service.TestCoolsms;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang.ObjectUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 @Controller
@@ -22,7 +23,7 @@ public class main {
     private final UserRepository userRepository;
 
     @RequestMapping("/")
-    public String Main() {
+    public String main() {
         return "main";
     }
 
@@ -33,36 +34,44 @@ public class main {
 
     @PostMapping("/message")
     @Transactional
-    public String testMessage(UserDB user, String phoneNumber, HttpServletRequest request) {
+    @ResponseBody
+    public Map<String, Object> testMessage(UserDB user, String phoneNumber, HttpServletRequest request) {
+        Map<String, Object> response = new HashMap<>();
+
         Random rand = new Random();
-        String numStr = "";
-        for(int i = 0; i< 6; i++) {
+        StringBuilder numStr = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
             String ran = Integer.toString(rand.nextInt(10));
-            numStr += ran;
+            numStr.append(ran);
         }
 
-        TestCoolsms.certifiedPhoneNumber(phoneNumber, numStr);
+        TestCoolsms.certifiedPhoneNumber(phoneNumber, numStr.toString());
 
-        if(userRepository.findByUserName(phoneNumber) != null) {
+        if (userRepository.findByUserName(phoneNumber) != null) {
             userRepository.deleteByUserName(phoneNumber);
         }
 
         user.setUserName(phoneNumber);
-        user.setToken(numStr);
+        user.setToken(numStr.toString());
 
         userRepository.save(user);
 
-        String referer = request.getHeader("Referer");
-        return "redirect:" + referer;
+        response.put("message", "Message sent successfully.");
+        response.put("token", numStr.toString());
+        return response;
     }
 
     @PostMapping("/messageCertificated")
-    public String messageAuth(String messageNumber) {
-        if(userRepository.findByToken(messageNumber) != null) {
-            return "home";
+    @ResponseBody
+    public Map<String, Object> messageAuth(String messageNumber) {
+        Map<String, Object> response = new HashMap<>();
+
+        if (userRepository.findByToken(messageNumber) != null) {
+            response.put("result", "success");
+        } else {
+            response.put("result", "failure");
         }
-        else {
-            return "main";
-        }
+
+        return response;
     }
 }

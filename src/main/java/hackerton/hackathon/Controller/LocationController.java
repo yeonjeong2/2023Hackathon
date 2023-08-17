@@ -1,49 +1,53 @@
-package hackerton.hackathon.Controller;
+package hackerton.hackathon.controller;
 
 import hackerton.hackathon.Domain.LocationDB;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/location")
 @RequiredArgsConstructor
 public class LocationController {
 
-    @GetMapping("/location")
-    public String SearchLocation(){
+    @GetMapping("/search")
+    public String searchLocation() {
         return "SearchLocation.html";
     }
 
-    @GetMapping("/position/{detailAddr}")
-    public String currentLocation(@PathVariable String detailAddr, Model model){
-        model.addAttribute("current",detailAddr);
-        return "index.html";
+    @GetMapping("/current/{detailAddr}")
+    public ResponseEntity<Map<String, String>> currentLocation(@PathVariable String detailAddr) {
+        Map<String, String> response = new HashMap<>();
+        response.put("current", detailAddr);
+        return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/position")
-    public String Position(@ModelAttribute LocationDB locationDB, Model model){
-        if (!locationDB.getCurrent().isEmpty()){
-            model.addAttribute("current",locationDB.getCurrent());
-        } else if(!locationDB.getCurrent().isEmpty() && !locationDB.getDestination().isEmpty()){
-            model.addAttribute("current",locationDB.getCurrent());
-            model.addAttribute("destination",locationDB.getDestination());
+    @PostMapping("/current")
+    public ResponseEntity<Map<String, String>> updateCurrentLocation(@ModelAttribute LocationDB locationDB) {
+        Map<String, String> response = new HashMap<>();
+        if (!locationDB.getCurrent().isEmpty()) {
+            response.put("current", locationDB.getCurrent());
         }
-        return "index.html";
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/position")
-    public String BothPosition(@RequestParam String current, @RequestParam String destination, Model model){
-        model.addAttribute("current", current);
-        model.addAttribute("destination", destination);
-        return "CallTaxi.html";
+    public ResponseEntity<Map<String, String>> showBothPositions(
+            @RequestParam String current,
+            @RequestParam String destination) {
+        Map<String, String> response = new HashMap<>();
+        response.put("current", current);
+        response.put("destination", destination);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/write/{current}")
-    public String WriteSearchLocation(@PathVariable String current, Model model){
+    public String writeSearchLocation(@PathVariable String current) {
         System.out.println("write");
-        model.addAttribute("current", current);
+        // Return a response suitable for your use case
         return "write.html";
     }
-
 }
