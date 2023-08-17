@@ -6,7 +6,7 @@
     <title>simpleMap</title>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script
-        src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=A5zEIYd2lH1u15lNECrV33yaRK43YWyk1NmNYXai"></script>
+            src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=A5zEIYd2lH1u15lNECrV33yaRK43YWyk1NmNYXai"></script>
     <script type="text/javascript">
         var map;
         var markerInfo;
@@ -29,6 +29,11 @@
         }
 
         function initTmap() {
+            var currentX = getUrlParameter("currentX");
+            var currentY = getUrlParameter("currentY");
+            var destinationX = getUrlParameter("destinationX");
+            var destinationY = getUrlParameter("destinationY");
+
             map = new Tmapv2.Map("map_div", {
                 width: "481px",
                 height: "600px",
@@ -38,14 +43,14 @@
             });
 
             marker_s = new Tmapv2.Marker({
-                position: new Tmapv2.LatLng(37.37211521039015, 126.64157407294688),
+                position: new Tmapv2.LatLng(currentY, currentX),
                 icon: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
                 iconSize: new Tmapv2.Size(24, 38),
                 map: map
             });
 
             marker_e = new Tmapv2.Marker({
-                position: new Tmapv2.LatLng(37.41814474013074, 126.67834271624223),
+                position: new Tmapv2.LatLng(destinationY, destinationX),
                 icon: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
                 iconSize: new Tmapv2.Size(24, 38),
                 map: map
@@ -53,6 +58,13 @@
 
             setMapCenterBetweenMarkers(marker_s, marker_e);
             drawRoute(marker_s.getPosition(), marker_e.getPosition());
+        }
+
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
         function drawRoute(startLatLng, endLatLng) {
@@ -242,11 +254,11 @@
 </head>
 
 <body onload="initTmap();">
-    <div id="map_wrap" class="map_wrap">
-        <div id="map_div"></div>
-    </div>
-    <p id="result"></p>
-    <br />
+<div id="map_wrap" class="map_wrap">
+    <div id="map_div"></div>
+</div>
+<p id="result"></p>
+<br />
 </body>
 
 <style>

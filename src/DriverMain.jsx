@@ -1,12 +1,59 @@
-// DriverMain.jsx
-import Basic_Components_top from "./Basic_Component_top";
+import React, { useState, useEffect } from 'react';
+import Basic_Components_top from './Basic_Component_top';
 import Basic_Components_bottom from './Basic_Component_bottom';
-import { useState } from 'react';
 import DriverCallReceive from './DriverCallReceive';
-import DriverCallWaiting from "./DriverCallWaiting";
+import DriverCallWaiting from './DriverCallWaiting';
+import axios from 'axios';
 
 export default function DriverMain() {
-    const [viewReceive, setViewReceive] = useState(true);
+    const [viewReceive, setViewReceive] = useState(false);
+    const [callReceiveData, setCallReceiveData] = useState({
+        currentX: "",
+        currentY: "",
+        destinationX: "",
+        destinationY: ""
+    });
+    const [showIframe, setShowIframe] = useState(false);
+    const [driverInfo, setDriverInfo] = useState({
+        name:"",
+        phone:"",
+        carNumber:"",
+        carType:""
+    });
+
+    useEffect(() => {
+        // Fetch data for DriverCallWaiting
+        axios.get('/api/taxiDriver')
+            .then(response => {
+                const data = response.data;
+                console.log('Driver Data:', data);
+                setDriverInfo(data);
+            })
+            .catch(error => {
+                console.error('Error fetching driver data:', error);
+            });
+
+        // Fetch data for DriverCallReceive
+        axios.get('/api/taxi')
+            .then(response => {
+                const data = response.data;
+                console.log('Call Receive Data:', data);
+                setCallReceiveData(data);
+                setViewReceive(true);
+            })
+            .catch(error => {
+                console.error('Error fetching call receive data:', error);
+            });
+
+    }, []);
+
+    const handleAcceptCall = () => {
+        setShowIframe(true);
+    };
+
+    const handleDenyCall = () => {
+        setViewReceive(false);
+    };
 
     return (
         <div className="App" style={{ height: '900px', width: '500px' }}>
@@ -18,15 +65,24 @@ export default function DriverMain() {
                     </div>
 
                     <div className="mainComponentWrapper">
-                        {viewReceive ? (
-                            <DriverCallWaiting onAccept={() => setViewReceive(false)}/>
-                        ) : (
-                            <iframe src="/test.html" title="External Map" style={{
+                        {showIframe ? (
+                            <iframe src={`/test.html?currentX=${callReceiveData.currentX}&currentY=${callReceiveData.currentY}&destinationX=${callReceiveData.destinationX}&destinationY=${callReceiveData.destinationY}`} title="External Map" style={{
                                 marginLeft: '6px',
                                 width: '460px',
                                 height: '800px',
                                 border: 'none'
                             }}></iframe>
+                        ) : (
+                            <>
+                                {viewReceive ? (
+                                    <DriverCallReceive
+                                        onAccept={handleAcceptCall}
+                                        onDeny={handleDenyCall}
+                                    />
+                                ) : (
+                                    <DriverCallWaiting />
+                                )}
+                            </>
                         )}
                     </div>
 
@@ -36,5 +92,5 @@ export default function DriverMain() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
