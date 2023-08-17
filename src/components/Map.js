@@ -10,7 +10,7 @@ export default function Map({ onDetailAddrChange, changeDir }) {
         var container = document.getElementById('map');
         var options = {
             center: new kakao.maps.LatLng(33.450701, 126.570667),
-            level: 1
+            level: 2
         };
 
         var geocoder = new kakao.maps.services.Geocoder();
@@ -65,7 +65,7 @@ export default function Map({ onDetailAddrChange, changeDir }) {
     }, []);
     return (
         <>
-            <div id="map" style={{ width: '400px', height: '500px' }}></div>
+            <div id="map" style={{ width: '400px', height: '300px' }}></div>
         </>
     )
 }

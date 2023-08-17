@@ -7,6 +7,7 @@ import Basic_Components_top from '../Basic_Component_top';
 import Basic_Components_bottom from '../Basic_Component_bottom';
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SetArrivalLocation() {
     const location = useLocation();
@@ -23,6 +24,11 @@ export default function SetArrivalLocation() {
 
     const [xDir, setXDir] = useState('');
     const [yDir, setYDir] = useState('');
+
+    const movePage = useNavigate();
+    function goCallingPage() {
+        movePage('/callingPage');
+    };
 
     const handleOpenModal = () => { // 말로 찾기, 글로 찾기 버튼을 클릭할 경우 실행됨
         setIsModalOpen(true); // 모달의 오픈 여부 true로 설정
@@ -68,9 +74,10 @@ export default function SetArrivalLocation() {
         "Dep X: "+xDep+" / Dep Y: "+yDep+" / Arr X: "+xDir+" / Arr Y: "+yDir);
     const handleConfirm = () => { // 모달을 닫고(목적지가 설정되고) 버튼이 변경되었을 때, 
         // 좌측 버튼(호출하기)을 클릭할 경우 실행됨
-        setIsModalOpen(false); // 모달의 오픈 여부 false로 설정
+        setIsModalOpen(false);
+        goCallingPage();
         // 택시 호출로 넘어가기, 아직 구현 X
-        axios({
+        /*axios({
             method: 'post',
             url: 'http://localhost:8080/api/client',
             data: {
@@ -78,12 +85,9 @@ export default function SetArrivalLocation() {
                 departureY: yDep,
                 destinationX : xDir,
                 destinationY : yDir
-                /*current : {
-                    currentX: xArr
-                    currentY: yArr
-                }*/
+                
             }
-        });
+        });}*/
     };
 
     const handleResearch = () => { // 모달을 닫고(목적지가 설정되고) 버튼이 변경되었을 때, 

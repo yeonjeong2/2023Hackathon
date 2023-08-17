@@ -31,11 +31,11 @@
 .btn_depLocationConfirm {
     margin: 5px 0px 10px;
     background-color: rgb(108, 184, 85);
-    border-radius: 10px;
+    border-radius: 20px;
     border: none;
     color: white;
     font-size: 33px;
-    width: 200px;
+    width: 400px;
     height: 90px;
 }
 

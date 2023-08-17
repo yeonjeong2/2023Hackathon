@@ -277,7 +277,7 @@ export default function Map({changeSearch, changeXdir,changeYdir}) {
     }, []);
     return (
         <div>
-            <div id="map" style={{width:"450px", height:"450px", position:"relative", overflow:"hidden"}} />
+            <div id="map" style={{width:"400px", height:"400px", position:"relative", overflow:"hidden"}} />
             <div id="menu_wrap" className="bg_white">
                 <div className="option">
                     <div>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Basic_Components_top from '../Basic_Component_top';
 import Basic_Components_bottom from '../Basic_Component_bottom';
+import axios from 'axios';
 const { kakao } = window;
 
 export default function DepartureLocation() {
@@ -11,6 +12,16 @@ export default function DepartureLocation() {
 
     function goSetArrivalLocation() {
         movePage(`/arrivalLocation?xDep=${xDep}&yDep=${yDep}&depName=${detailAddr}`);
+    }
+    function goCallingPage() {
+        /*axios.post({
+            url:'http://server.msinu.net:8080',
+            data : {
+                xDep : {xDep},
+                yDep : {yDep}
+            }
+        });*/
+        movePage('/callingPage');
     }
 
     const [detailAddr, setDetailAddr] = useState("");
@@ -46,8 +57,11 @@ export default function DepartureLocation() {
                         </div>
                         <div className="buttons">
                             <button className="btn_depLocationConfirm" onClick={()=> {
+                                goCallingPage();
+                            }}>바로 택시 부르기</button>
+                            <button className="btn_depLocationConfirm" onClick={()=> {
                                 goSetArrivalLocation();
-                            }}>여기로<br />부를게요</button>
+                            }}>목적지도 입력하기</button>
                         </div>
                     </div>
 
