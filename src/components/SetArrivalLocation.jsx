@@ -76,20 +76,33 @@ export default function SetArrivalLocation() {
         // 좌측 버튼(호출하기)을 클릭할 경우 실행됨
         setIsModalOpen(false);
         goCallingPage();
-        // 택시 호출로 넘어가기, 아직 구현 X
-        /*axios({
-            method: 'post',
-            url: 'http://localhost:8080/api/client',
-            data: {
-                departureX: xDep,
-                departureY: yDep,
-                destinationX : xDir,
-                destinationY : yDir
-                
-            }
-        });}*/
+        sendData();
     };
 
+    const sendData = async () => {
+        const body = {
+            xDep: xDep,
+            yDep: yDep,
+            xDir: xDir,
+            yDir: yDir
+        };
+    
+        try {
+            await axios.post('http://3.37.217.126:8080', JSON.stringify(body), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            // Data sent successfully
+            console.log('Data sent successfully');
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+    
+    // Call the function to send the data
+    
     const handleResearch = () => { // 모달을 닫고(목적지가 설정되고) 버튼이 변경되었을 때, 
         // 우측 버튼(다시 찾기)을 클릭할 경우 실행됨
         setDestination(""); // 목적지(destination)을 ""로 초기화
