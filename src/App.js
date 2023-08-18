@@ -10,8 +10,7 @@ function App() {
   
   return (
       <Routes>
-        <Route path={"/"} element={<LoginPage />}></Route>
-        <Route path={"/departureLocation"} element={<DepartureLocation />}></Route>
+        <Route path={"/"} element={<DepartureLocation />}></Route>
         <Route path={"/arrivalLocation"} element={<SetArrivalLocation />}></Route>
         <Route path={"/callingPage"} element={<CallingPage />}></Route>
       </Routes>
