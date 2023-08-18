@@ -17,7 +17,7 @@ const StyledButton = styled.button`
   }
 `;
 
-export default function DriverCallReceive({ onAccept }) {
+export default function DriverCallReceive({ onAccept, onDeny }) {
     const [callReceiveData, setCallReceiveData] = useState({
         currentX: "",
         currentY: "",
@@ -57,8 +57,8 @@ export default function DriverCallReceive({ onAccept }) {
                 <div id="end"> 도착지 : {callReceiveData.destinationX}, {callReceiveData.destinationY} </div><br/>
             </div>
             <div className="buttons">
-                {/*<StyledButton onClick={onDeny}>거절</StyledButton>*/}
-                <StyledButton onClick={handleClick}>수락</StyledButton>
+                <StyledButton onClick={onDeny}>거절</StyledButton>
+                <StyledButton onClick={onAccept}>수락</StyledButton>
             </div>
         </div>
     )
