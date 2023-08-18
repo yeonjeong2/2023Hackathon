@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DepMap from "./DepMap.js";
-import './SetArrivalLocation.css';
+import './CheckPath.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMicrophone, faKeyboard, faL } from "@fortawesome/free-solid-svg-icons";
 import Basic_Components_top from '../Basic_Component_top';
@@ -103,12 +103,12 @@ export default function SetArrivalLocation() {
                 <div className="screen">
                     <div className="basic_Components_top">
                         <Basic_Components_top />
-                  
+                        <hr />
                     </div>
 
                     <div className="div_head">
                         <div className="location">
-                            <p>&nbsp; <b>{depName}</b></p> {/* 현 위치도 가져와야 함. 현재는 우선 '가져온 위치 정보'로 고정 */}
+                            <p>내 위치 &nbsp; <b>{depName}</b></p> {/* 현 위치도 가져와야 함. 현재는 우선 '가져온 위치 정보'로 고정 */}
                         </div>
                         <div className="location">
                             <p>목적지 &nbsp; <b>{destination}</b></p> {/* 목적지를 담는 destination 변수, 현재는 모달을 닫을 경우 '가져온 위치 정보'로 고정 */}
@@ -159,7 +159,7 @@ export default function SetArrivalLocation() {
                     </div>
 
                     <div className="basic_Components_bottom">
-               
+                        <hr />
                         <Basic_Components_bottom />
                     </div>
                 </div>

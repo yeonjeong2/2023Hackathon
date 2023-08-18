@@ -1,6 +1,6 @@
 // DriverMain.jsx
-import Basic_Components_top from '../../Basic_Component_top';
-import Basic_Components_bottom from '../../Basic_Component_bottom';
+import Basic_Components_top from '../Basic_Component_top';
+import Basic_Components_bottom from '../Basic_Component_bottom';
 import { useState } from 'react';
 import DriverCallReceive from './DriverCallReceive';
 
@@ -13,7 +13,7 @@ export default function DriverMain() {
                 <div className="screen">
                     <div className="basic_Components_top">
                         <Basic_Components_top />
-                     
+                        <hr />
                     </div>
 
                     <div className="mainComponentWrapper">

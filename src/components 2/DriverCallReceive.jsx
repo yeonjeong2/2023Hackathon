@@ -8,7 +8,7 @@ export default function DriverCallReceive() {
                 <div className="screen">
                     <div className="basic_Components_top">
                         <Basic_Components_top />
-                      
+                        <hr />
                     </div>
 
                     <div className="div_head"> 
@@ -24,7 +24,7 @@ export default function DriverCallReceive() {
                     </div>
 
                     <div className="basic_Components_bottom">
-                     
+                        <hr />
                         <Basic_Components_bottom />
                     </div>
                 </div>
